@@ -5,6 +5,43 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ex1.ui.ActivityEx1">
+        tools:context=".ex1.ui.ActivityEx1"
+        android:id="@+id/main_ex1">
 
+    <Button
+            android:text="Load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/btn_ex1_load" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="128dp"/>
+    <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:srcCompat="@drawable/ic_launcher_foreground"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            android:id="@+id/imageView" android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            android:layout_marginTop="96dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="h,1:1"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline" app:layout_constraintGuide_percent="0.25"
+                                          android:orientation="vertical"/>
+    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:id="@+id/guideline2" app:layout_constraintGuide_percent="0.75"
+                                          android:orientation="vertical"/>
+    <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/textView_ex1_name" android:layout_marginTop="56dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"/>
+    <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/textView_ex1_gender" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView_ex1_name"/>
 </android.support.constraint.ConstraintLayout>
