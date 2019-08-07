@@ -22,7 +22,7 @@ class ActivityEx1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ex1)
-        btn_ex1_load.setOnClickListener { loads() }
+        btn_ex1_load.setOnClickListener { loadJson() }
     }
 
     private fun loads() {
@@ -48,11 +48,39 @@ class ActivityEx1 : AppCompatActivity() {
                         )
                         GlideApp.with(baseContext)
                             .load(it.getPicture().large)
-                            .fitCenter()
+                            .circleCrop()
                             .placeholder(R.drawable.persona)
                             .into(imageView_ex1_logo)
                     }
                 }
             })
+
     }
+
+    fun loadJson() {
+        val gender = if (random.nextBoolean()) Gender.Male.value else Gender.Female.value
+        RandomUserService.instance.createRandomUserStringApi()
+            .getStringData(gender, RandomUserService.INC).enqueue(object : Callback<String> {
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    textView_ex1_name.text = t.toString()
+                }
+
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    textView_ex1_name.text = response.body()
+                }
+
+
+            })
+
+    }
+    //todo rx
+    //todo corutines
+    //todo livedata?
+    //todo token
+    //todo parse headr
+    //todo interceptor
+    //todo  okhhtp3
+    //todo oath2
+    
+
 }

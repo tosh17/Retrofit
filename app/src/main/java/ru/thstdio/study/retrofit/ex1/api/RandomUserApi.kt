@@ -8,4 +8,8 @@ import ru.thstdio.study.retrofit.ex1.pojo.UserModel
 interface RandomUserApi {
     @GET("/api")
     fun getData(@Query("gender") Gender: String, @Query("inc") inc: String): Call<UserModel>
+
+    @GET("/api")
+    fun getStringData(@Query("gender") Gender: String, @Query("inc") inc: String): Call<String>
+
 }
