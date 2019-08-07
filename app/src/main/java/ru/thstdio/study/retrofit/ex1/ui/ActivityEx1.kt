@@ -12,6 +12,7 @@ import ru.thstdio.study.retrofit.R
 import ru.thstdio.study.retrofit.ex1.api.RandomUserService
 import ru.thstdio.study.retrofit.ex1.api.param.Gender
 import ru.thstdio.study.retrofit.ex1.pojo.UserModel
+import ru.thstdio.study.retrofit.glide.GlideApp
 import java.util.*
 
 
@@ -25,7 +26,7 @@ class ActivityEx1 : AppCompatActivity() {
     }
 
     private fun loads() {
-        val gender = if (random.nextBoolean()) Gender.Male.name else Gender.Female.name
+        val gender = if (random.nextBoolean()) Gender.Male.value else Gender.Female.value
         RandomUserService.instance.createRandomUserApi()
             .getData(gender, RandomUserService.INC)
             .enqueue(object : Callback<UserModel> {
@@ -41,10 +42,15 @@ class ActivityEx1 : AppCompatActivity() {
                         main_ex1.setBackgroundColor(
                             ContextCompat.getColor(
                                 baseContext,
-                                if (it.getGender() == Gender.Male.name) R.color.pink
+                                if (it.getGender() != Gender.Male.value) R.color.pink
                                 else R.color.blue
                             )
                         )
+                        GlideApp.with(baseContext)
+                            .load(it.getPicture().large)
+                            .fitCenter()
+                            .placeholder(R.drawable.persona)
+                            .into(imageView_ex1_logo)
                     }
                 }
             })

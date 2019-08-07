@@ -8,8 +8,10 @@ class UserModel {
     @Expose
     lateinit var results: List<ResultsGson>
 
-    fun getGender() = results[0].gender
-    fun getName() = results[0].name.toString()
+    fun getResult()= results[0]
+    fun getGender() = getResult().gender
+    fun getName() = getResult().name.toString()
+    fun getPicture()=getResult().picture
 
 
     class ResultsGson {
@@ -41,6 +43,24 @@ class UserModel {
             override fun toString(): String {
                 return "$title  $first  $last"
             }
+        }
+
+        @SerializedName("picture")
+        @Expose
+        lateinit var picture: PictureGson
+
+        class PictureGson {
+            @SerializedName("large")
+            @Expose
+            lateinit var large: String
+
+            @SerializedName("medium")
+            @Expose
+            lateinit var medium: String
+
+            @SerializedName("thumbnail")
+            @Expose
+            lateinit var thumbnail: String
         }
     }
 
