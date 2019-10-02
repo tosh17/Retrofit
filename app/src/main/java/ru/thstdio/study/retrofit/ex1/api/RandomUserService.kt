@@ -3,7 +3,7 @@ package ru.thstdio.study.retrofit.ex1.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 class RandomUserService {
     companion object {
@@ -21,6 +21,7 @@ class RandomUserService {
         mRetrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
         mRetrofitString = Retrofit.Builder()
             .baseUrl(BASE_URL)
